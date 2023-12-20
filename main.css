@@ -1,0 +1,132 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: tahoma, Helvetica, sans-serif;
+}
+
+.start-game {
+  width: 100%;
+  height: 100%;
+  background-color: #bdcdd6ba;
+  position: fixed;
+  z-index: 2;
+}
+.start-game span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #EEE9DA;
+  color: #6096B4;
+  padding: 10px 15px;
+  font-size: 24px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.info-container {
+  width: 760px;
+  display: flex;
+  justify-content: space-between;
+  margin: 5px auto 10px;
+  padding: 15px;
+  color: #6096b4;
+  background-color: #eee9da;
+  border: 2px solid #6096b4;
+  /* border-radius: 8px; */
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.card-container {
+  width: 760px;
+  height: 606px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 10px;
+}
+@media (max-width: 768px) {
+  .info-container,
+  .card-container {
+    width: 600px;
+  }
+  .card-container {
+    height: 478px;
+  }
+}
+@media (max-width: 600px) {
+  .info-container,
+  .card-container {
+    width: 450px;
+  }
+  .info-container {
+    font-size: 15px;
+    padding: 10px;
+  }
+  .card-container {
+    height: 358px;
+  }
+}
+.card-container.no-clicking {
+  pointer-events: none;
+}
+.card-container .card {
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+  background-color: #eee;
+}
+.card-container .card.flipped,
+.card-container .card.match {
+  transform: rotateY(180deg);
+}
+.card-container .card .front {
+  background-color: #93bfcf;
+  color: #f5f5f5;
+  font-size: 110px;
+  text-align: center;
+  line-height: 120%;
+}
+@media (max-width: 768px) {
+  .card-container .card .front {
+    font-size: 80px;
+  }
+}
+@media (max-width: 600px) {
+  .card-container .card .front {
+    font-size: 60px;
+  }
+}
+/* .card-container .card .front::before {
+  content: "?";
+  color: white;
+  font-size: 140px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
+.card-container .card .back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotateY(180deg);
+  width: fit-content;
+}
+.card-container .card .face {
+  position: absolute;
+  border: 3px solid #6096b4;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+.card-container .card .back img {
+  width: 100%;
+  height: 100%;
+}
